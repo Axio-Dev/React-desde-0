@@ -30,7 +30,7 @@ const spiderman: Person = {
     }
 }
 
-console.log(ironman);
+console.log(ironman, spiderman);
 
 // const spiderman = { ...ironman }; //
 /* Con los 3 puntos le estamos diciendo que esparza/asigne todos los valores de iron en spiderman, se le conoce como operador speard */
