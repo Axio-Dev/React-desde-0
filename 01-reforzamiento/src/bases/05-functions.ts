@@ -17,7 +17,7 @@ function getUser() {
     }
 }
 
-// Tarea en vídeo
+// Tarea en vídeo: crear una función de flecha que regrese lo mismo que getUser()
 const getUser2 = () => {
     return {
         uid: 'Uid-123',
