@@ -20,7 +20,7 @@ interface Hero {
     rank?: string;
 }
 
-const userContext = ({ key, name, age, rank = 'Sin rango' }: Hero) => {
+const userContext = ({ key, name, age, rank = 'Sin rango' /*<== Valor por defecto */  }: Hero) => {
     return {
         keyName: key,
         user: {
@@ -38,8 +38,8 @@ const {
     user
 } = userContext(person);
 
-const { name } = user;
+const { name } = user; // Desestructurando el name que viene de person
 
-console.log({rank, keyName, name});
+console.log({rank, keyName, name}); // Desestructurando propiedades de userContext (que incluyen valores de person y un valor por defecto)
 
 
