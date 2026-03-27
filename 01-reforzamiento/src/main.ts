@@ -11,10 +11,12 @@ import './style.css';
 // import './data/heroes.data.ts'
 // import './bases/08-import-export.ts';
 // import './homeworks/02-homework.ts';
-import './homeworks/02-homework.ts';
+// import './homeworks/02-homework.ts';
+// import './bases/09-promises.ts'
+import './bases/10-fetch-apis.ts'
 
-import { getHeroByOwner } from './homeworks/02-homework.ts';
-import { Owner } from './data/heroes.data.ts'; 
+// import { getHeroByOwner } from './homeworks/02-homework.ts';
+// import { Owner } from './data/heroes.data.ts'; 
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <div>
@@ -22,4 +24,4 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     </div>
 `
 
-console.log(getHeroByOwner(Owner.Marvel))
+// console.log(getHeroByOwner(Owner.Marvel))
