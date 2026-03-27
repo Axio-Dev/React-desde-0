@@ -10,7 +10,7 @@ export enum Owner {
     Marvel = 'Marvel', // 1 // String 'Marvel'
 }
 
-export const heroes: Hero[] = [
+export const heros: Hero[] = [
   {
     id: 1,
     name: 'Batman',
@@ -43,4 +43,4 @@ export const heroes: Hero[] = [
   }
 ];
 
-export default heroes;
+export default heros;

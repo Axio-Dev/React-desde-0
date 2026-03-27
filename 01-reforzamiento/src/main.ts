@@ -14,7 +14,7 @@ import './style.css';
 import './homeworks/02-homework.ts';
 
 import { getHeroByOwner } from './homeworks/02-homework.ts';
-import { Owner } from './data/heroes.data.ts';
+import { Owner } from './data/heroes.data.ts'; 
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <div>

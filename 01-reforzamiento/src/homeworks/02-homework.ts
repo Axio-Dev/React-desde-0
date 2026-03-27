@@ -9,11 +9,11 @@
 
 */
 
-import { heroes, Owner } from "../data/heroes.data";
+import { heros, Owner } from "../data/heroes.data";
 
 
 export const getHeroByOwner = (ownerParam: Owner) => {
-    const hero = heroes.filter((hero) => hero.owner === ownerParam)
+    const hero = heros.filter((hero) => hero.owner === ownerParam)
     return hero;
 }
 
