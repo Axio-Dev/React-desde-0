@@ -8,11 +8,18 @@ import './style.css';
 // import './bases/06-obj-destructuring.ts';
 // import './bases/07-array-destructuring.ts'
 // import './bases/homework-01.ts'
-import './data/heroes.data.ts'
-import './bases/08-import-export.ts';
+// import './data/heroes.data.ts'
+// import './bases/08-import-export.ts';
+// import './homeworks/02-homework.ts';
+import './homeworks/02-homework.ts';
+
+import { getHeroByOwner } from './homeworks/02-homework.ts';
+import { Owner } from './data/heroes.data.ts';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <div>
       <h1>Hola mundo</h1>
     </div>
 `
+
+console.log(getHeroByOwner(Owner.Marvel))
