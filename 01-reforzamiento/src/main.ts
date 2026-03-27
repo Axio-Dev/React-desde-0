@@ -7,7 +7,8 @@ import './style.css';
 // import './bases/05-functions';
 // import './bases/06-obj-destructuring.ts';
 // import './bases/07-array-destructuring.ts'
-import './bases/homework-01.ts'
+// import './bases/homework-01.ts'
+import './bases/data/heroes.data.ts'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <div>
