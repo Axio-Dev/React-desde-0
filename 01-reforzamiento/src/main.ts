@@ -9,6 +9,7 @@ import './style.css';
 // import './bases/07-array-destructuring.ts'
 // import './bases/homework-01.ts'
 import './data/heroes.data.ts'
+import './bases/08-import-export.ts';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <div>
