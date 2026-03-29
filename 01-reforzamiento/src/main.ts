@@ -13,7 +13,8 @@ import './style.css';
 // import './homeworks/02-homework.ts';
 // import './homeworks/02-homework.ts';
 // import './bases/09-promises.ts'
-import './bases/10-fetch-apis.ts'
+// import './bases/10-fetch-apis.ts'
+import './bases/11-async-await.ts'
 
 // import { getHeroByOwner } from './homeworks/02-homework.ts';
 // import { Owner } from './data/heroes.data.ts'; 
