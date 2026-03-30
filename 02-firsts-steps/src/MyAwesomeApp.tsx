@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 /* Es mejor tener las variables (que no vayan a cambiar) fuera del componente */
 const firstName = 'Axel';
 const lastName = 'Vazquez';
@@ -10,6 +12,13 @@ const address = {
     country: 'México'
 }
 
+const myStyles: CSSProperties = {
+    backgroundColor: '#901e1e',
+    borderRadius: 20,
+    padding: 10,
+    marginTop: 30,
+}
+
 export function MyAwesomeApp() {
     // Componente para imprimir variables
     return (
@@ -19,7 +28,8 @@ export function MyAwesomeApp() {
             <p>{favoriteGames.join(', ')}</p>
             <p>{2 + 4}</p>
             <h1>{isActive ? 'Activo' : 'No activo'}</h1>
-            <p>{JSON.stringify(address)}</p>
+            <p
+            /* Agregando estilos CSS*/ style={myStyles}>{JSON.stringify(address)}</p>
         </>
     )
 }
