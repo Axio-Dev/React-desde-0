@@ -1,0 +1,25 @@
+/* Es mejor tener las variables (que no vayan a cambiar) fuera del componente */
+const firstName = 'Axel';
+const lastName = 'Vazquez';
+
+const favoriteGames = ['Gears of War', 'GTA IV', 'Minecraft'];
+const isActive = false;
+
+const address = {
+    zipCode: 'AC-123',
+    country: 'México'
+}
+
+export function MyAwesomeApp() {
+    // Componente para imprimir variables
+    return (
+        <>
+            <h1> {firstName} </h1>
+            <h3> {lastName} </h3>
+            <p>{favoriteGames.join(', ')}</p>
+            <p>{2 + 4}</p>
+            <h1>{isActive ? 'Activo' : 'No activo'}</h1>
+            <p>{JSON.stringify(address)}</p>
+        </>
+    )
+}
