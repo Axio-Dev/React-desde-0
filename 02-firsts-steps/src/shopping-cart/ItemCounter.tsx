@@ -1,5 +1,8 @@
 import { useState } from "react";
 
+// import './ItemCounter.css' <== importando como hoja de estilos normal
+import styles from './ItemCounter.module.css' // <== Importando como modulo de CSS
+
 interface Props {
     name: string;
     quantity?: number;
@@ -19,16 +22,11 @@ export const ItemCounter = ({ name, quantity = 0 }: Props) => {
     }
 
     return (
-        <section style={{
-            display: "flex",
-            alignItems: 'center',
-            gap: 10,
-            marginTop: 10,
-        }}>
+        <section className={styles.itemRow}>
             <span
+                className={styles['item-text']}
                 style={{
-                    width: 150,
-                    color: count <= 5 ? 'red' : 'green'
+                    color: count <= 5 ? 'red' : 'green' // Este tipo de estilos que son dinámicos, se dejan dentro del componente
                 }}
             >
                 {name}
@@ -36,6 +34,6 @@ export const ItemCounter = ({ name, quantity = 0 }: Props) => {
             <button onClick={handleAdd}>+1</button>
             <span>{count}</span>
             <button onClick={handleSubtract}> -1 </button>
-        </section>
+        </section >
     )
 }
