@@ -8,7 +8,7 @@ const favoriteGames = ['Gears of War', 'GTA IV', 'Minecraft'];
 const isActive = false;
 
 const address = {
-    zipCode: 'AC-123',
+    zipCode: 'ABC-123',
     country: 'México'
 }
 
