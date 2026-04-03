@@ -23,7 +23,7 @@ export function MyAwesomeApp() {
     // Componente para imprimir variables
     return (
         <>
-            <h1> {firstName} </h1>
+            <h1 data-testid="first-name-label"> {firstName} </h1>
             <h3> {lastName} </h3>
             <p>{favoriteGames.join(', ')}</p>
             <p>{2 + 4}</p>
