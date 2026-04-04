@@ -1,0 +1,75 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MyAwesomeApp > should match snapshot 1`] = `
+<div>
+  <div
+    data-testid="mi-div"
+  >
+    <h1
+      data-testid="first-name-label"
+    >
+       
+      Axel
+       
+    </h1>
+    <h3>
+       
+      Vazquez
+       
+    </h3>
+    <p
+      class="mi-clase-favorita"
+    >
+      Gears of War, GTA IV, Minecraft
+    </p>
+    <p>
+      6
+    </p>
+    <h1>
+      No activo
+    </h1>
+    <p
+      style="background-color: rgb(144, 30, 30); border-radius: 20px; padding: 10px; margin-top: 30px;"
+    >
+      {"zipCode":"ABC-123","country":"México"}
+    </p>
+  </div>
+</div>
+`;
+
+exports[`MyAwesomeApp > should match snapshot 2`] = `
+[
+  <div
+    data-testid="mi-div"
+  >
+    <h1
+      data-testid="first-name-label"
+    >
+       
+      Axel
+       
+    </h1>
+    <h3>
+       
+      Vazquez
+       
+    </h3>
+    <p
+      class="mi-clase-favorita"
+    >
+      Gears of War, GTA IV, Minecraft
+    </p>
+    <p>
+      6
+    </p>
+    <h1>
+      No activo
+    </h1>
+    <p
+      style="background-color: rgb(144, 30, 30); border-radius: 20px; padding: 10px; margin-top: 30px;"
+    >
+      {"zipCode":"ABC-123","country":"México"}
+    </p>
+  </div>,
+]
+`;

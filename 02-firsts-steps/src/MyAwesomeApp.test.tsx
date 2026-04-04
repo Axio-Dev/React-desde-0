@@ -27,7 +27,15 @@ describe('MyAwesomeApp', () => {
         const h1 = screen.getByTestId("first-name-label");
 
         expect(h1.innerHTML).toContain("Axel");
+    });
 
-
+    test('should match snapshot', () => {
+        // Los snapshots son muy volatiles, porque lo que debemos de limitar su uso en tests para comoponentes que no van a estar cambiando su estructura
+        const { container } = render(<MyAwesomeApp />);
+        expect(container).toMatchSnapshot();
+    });
+    test('should match snapshot', () => {
+        render(<MyAwesomeApp />);
+        expect(screen.getAllByTestId("mi-div")).toMatchSnapshot();
     });
 });
