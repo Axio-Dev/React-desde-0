@@ -29,8 +29,6 @@ describe("ItemCounter", () => {
 
         const [buttonAdd] = screen.getAllByRole('button');
 
-        console.log(buttonAdd.innerHTML);
-
         fireEvent.click(buttonAdd);
 
         expect(screen.getByText('2')).toBeDefined();
@@ -42,8 +40,6 @@ describe("ItemCounter", () => {
         render(<ItemCounter name='Test item' quantity={5} />);
 
         const [, buttonSubtract] = screen.getAllByRole('button');
-
-        console.log(buttonSubtract.innerHTML);
 
         fireEvent.click(buttonSubtract);
 
@@ -58,11 +54,29 @@ describe("ItemCounter", () => {
 
         const [, buttonSubtract] = screen.getAllByRole('button');
 
-        console.log(buttonSubtract.innerHTML);
-
         fireEvent.click(buttonSubtract);
 
         expect(screen.getByText('0')).toBeDefined();
 
+    });
+
+    test('should change to red when count is greater than 5', () => {
+        const quantity = 5;
+        const name = 'Test item'
+        render(<ItemCounter name={name} quantity={quantity} />);
+
+        const itemText = screen.getByText(name);
+
+        expect(itemText.style.color).toBe('red');
+    });
+
+    test('should change to green when counter is greater than 5', () => {
+        const quantity = 6;
+        const name = 'Test item'
+        render(<ItemCounter name={name} quantity={quantity} />);
+
+        const itemText = screen.getByText(name);
+
+        expect(itemText.style.color).toBe('green');
     });
 });
