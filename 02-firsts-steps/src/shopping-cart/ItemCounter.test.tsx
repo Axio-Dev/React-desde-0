@@ -1,82 +1,74 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import { describe, expect, test } from "vitest";
-import { ItemCounter } from "./ItemCounter";
+import { fireEvent, render, screen } from '@testing-library/react';
+import { describe, expect, test } from 'vitest';
+import { ItemCounter } from './ItemCounter';
 
+describe('ItemCounter', () => {
+  test('should render with default value', () => {
+    const name = 'Test item';
 
+    render(<ItemCounter name={name} />);
 
-describe("ItemCounter", () => {
-    test('should render with default value', () => {
-        const name = "Test item";
+    expect(screen.getByText(name)).toBeDefined();
+    expect(screen.getByText(name)).not.toBeNull();
+  });
 
-        render(<ItemCounter name={name} />);
+  test('should render with custom quantity', () => {
+    const name = 'Control de nintendo';
+    const quantity = 10;
 
-        expect(screen.getByText(name)).toBeDefined();
-        expect(screen.getByText(name)).not.toBeNull();
-    });
+    render(<ItemCounter name={name} quantity={quantity} />);
 
-    test('should render with custom quantity', () => {
-        const name = "Control de nintendo";
-        const quantity = 10;
+    expect(screen.getByText(quantity)).toBeDefined();
+  });
 
-        render(<ItemCounter name={name} quantity={quantity} />);
+  test('should increase count when +1 button is pressed', () => {
+    render(<ItemCounter name="Test item" quantity={1} />);
 
-        expect(screen.getByText(quantity)).toBeDefined();
-    });
+    const [buttonAdd] = screen.getAllByRole('button');
 
-    test('should increase count when +1 button is pressed', () => {
+    fireEvent.click(buttonAdd);
 
-        render(<ItemCounter name='Test item' quantity={1} />);
+    expect(screen.getByText('2')).toBeDefined();
+  });
 
-        const [buttonAdd] = screen.getAllByRole('button');
+  test('should decress count when -1 button is pressed', () => {
+    render(<ItemCounter name="Test item" quantity={5} />);
 
-        fireEvent.click(buttonAdd);
+    const [, buttonSubtract] = screen.getAllByRole('button');
 
-        expect(screen.getByText('2')).toBeDefined();
+    fireEvent.click(buttonSubtract);
 
-    });
+    expect(screen.getByText('4')).toBeDefined();
+  });
 
-    test('should decress count when -1 button is pressed', () => {
+  test('should not decress count when -1 button is pressed and quantity is 0', () => {
+    const quantity = 0;
+    render(<ItemCounter name="Test item" quantity={quantity} />);
 
-        render(<ItemCounter name='Test item' quantity={5} />);
+    const [, buttonSubtract] = screen.getAllByRole('button');
 
-        const [, buttonSubtract] = screen.getAllByRole('button');
+    fireEvent.click(buttonSubtract);
 
-        fireEvent.click(buttonSubtract);
+    expect(screen.getByText('0')).toBeDefined();
+  });
 
-        expect(screen.getByText('4')).toBeDefined();
+  test('should change to red when count is greater than 5', () => {
+    const quantity = 5;
+    const name = 'Test item';
+    render(<ItemCounter name={name} quantity={quantity} />);
 
-    });
+    const itemText = screen.getByText(name);
 
-    test('should not decress count when -1 button is pressed and quantity is 0', () => {
+    expect(itemText.style.color).toBe('red');
+  });
 
-        const quantity = 0;
-        render(<ItemCounter name='Test item' quantity={quantity} />);
+  test('should change to green when counter is greater than 5', () => {
+    const quantity = 6;
+    const name = 'Test item';
+    render(<ItemCounter name={name} quantity={quantity} />);
 
-        const [, buttonSubtract] = screen.getAllByRole('button');
+    const itemText = screen.getByText(name);
 
-        fireEvent.click(buttonSubtract);
-
-        expect(screen.getByText('0')).toBeDefined();
-
-    });
-
-    test('should change to red when count is greater than 5', () => {
-        const quantity = 5;
-        const name = 'Test item'
-        render(<ItemCounter name={name} quantity={quantity} />);
-
-        const itemText = screen.getByText(name);
-
-        expect(itemText.style.color).toBe('red');
-    });
-
-    test('should change to green when counter is greater than 5', () => {
-        const quantity = 6;
-        const name = 'Test item'
-        render(<ItemCounter name={name} quantity={quantity} />);
-
-        const itemText = screen.getByText(name);
-
-        expect(itemText.style.color).toBe('green');
-    });
+    expect(itemText.style.color).toBe('green');
+  });
 });
