@@ -1,4 +1,4 @@
-import { useState, type KeyboardEvent } from "react";
+import { useEffect, useState, type KeyboardEvent } from "react";
 
 interface Props {
   placeholder?: string;
@@ -8,6 +8,19 @@ interface Props {
 
 export const SearchBar = ({ placeholder = "Buscar", onQuery }: Props) => {
   const [query, setQuery] = useState(""); // Se pone como un string vacío por defecto el query
+
+  useEffect(() => {
+    const timeOutId = setTimeout(() => {
+      /* Diciendo a react, cada que pasen 700 milesimas de segundo, guarda el query */
+      onQuery(query);
+    }, 700); // 700 milesimas de segundo
+
+    // onQuery(query);
+
+    return () => {
+      clearTimeout(timeOutId);
+    };
+  }, [query, onQuery]);
 
   const handleSearch = () => {
     /* Función para que se obtenga los strings que una usuario está ingresando
