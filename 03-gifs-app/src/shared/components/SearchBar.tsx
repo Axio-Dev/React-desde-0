@@ -32,7 +32,6 @@ export const SearchBar = ({ placeholder = "Buscar", onQuery }: Props) => {
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     /* Función para que cuando se presione "Enter" se dispare el evento onKeyDown */
     if (event.key === "Enter") {
-      // Dispara handleSearch una vez que detecta que la tecla presionado fue enter
       handleSearch();
     }
   };
