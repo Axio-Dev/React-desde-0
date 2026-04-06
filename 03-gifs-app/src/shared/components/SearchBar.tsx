@@ -13,7 +13,7 @@ export const SearchBar = ({ placeholder = "Buscar", onQuery }: Props) => {
     const timeOutId = setTimeout(() => {
       /* Diciendo a react, cada que pasen 700 milesimas de segundo, guarda el query */
       onQuery(query);
-    }, 700); // 700 milesimas de segundo
+    }, 700);
 
     // onQuery(query);
 
