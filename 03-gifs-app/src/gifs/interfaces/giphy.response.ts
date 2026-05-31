@@ -12,7 +12,6 @@ export interface GiphyGif {
   bitly_gif_url: string;
   bitly_url: string;
   embed_url: string;
-  username: Username;
   source: string;
   title: string;
   rating: Rating;
@@ -63,20 +62,15 @@ export interface FixedHeight {
   hash?: string;
 }
 
-export enum Rating {
-  G = "g",
-}
+export type Rating = "G" | "PG";
 
-export enum Type {
-  GIF = "gif",
-}
+export type Type = "gif";
 
 export interface User {
   avatar_url: string;
   banner_image: string;
   banner_url: string;
   profile_url: string;
-  username: Username;
   display_name: DisplayName;
   description: Description;
   instagram_url: string;
@@ -84,17 +78,9 @@ export interface User {
   is_verified: boolean;
 }
 
-export enum Description {
-  TheOfficialGiphyChannelForApexLegends = "The Official Giphy Channel for Apex Legends.",
-}
+export type Description = "The Official Giphy Channel for Apex Legends.";
 
-export enum DisplayName {
-  ApexLegends = "Apex Legends",
-}
-
-export enum Username {
-  Playapex = "playapex",
-}
+export type DisplayName = "Apex Legends";
 
 export interface Meta {
   status: number;

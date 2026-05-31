@@ -1,6 +1,6 @@
 import { useCounter } from "../hooks/useCounter";
 
-const MyCounterApp = () => {
+export const MyCounterApp = () => {
   const { counter, handleAdd, handleReset, handleSubtract } = useCounter(5);
 
   return (
@@ -16,5 +16,3 @@ const MyCounterApp = () => {
     </div>
   );
 };
-
-export default MyCounterApp;
