@@ -1,24 +1,20 @@
+import type { GiphyResponse } from "../interfaces/giphy.response";
 import type { Gif } from "../interfaces/gif.interface";
+import { giphyApi } from "../api/giphyApi";
 
 export const getGifsByQuery = async (query: string): Promise<Gif[]> => {
-  const params = new URLSearchParams({
-    q: query,
-    limit: "10",
-    lang: "es",
-    api_key: import.meta.env.VITE_GIPHY_API_KEY,
+  const response = await giphyApi<GiphyResponse>("/search", {
+    params: {
+      q: query,
+      limit: 10,
+    },
   });
 
-  const response = await fetch(
-    `https://api.giphy.com/v1/gifs/search?${params}`,
-  );
-
-  const { data } = await response.json();
-
-  return data.map((gif: any) => ({
+  return response.data.data.map((gif) => ({
     id: gif.id,
     title: gif.title,
     url: gif.images.original.url,
-    width: gif.images.original.width,
-    height: gif.images.original.height,
+    width: Number(gif.images.original.width),
+    height: Number(gif.images.original.height),
   }));
 };

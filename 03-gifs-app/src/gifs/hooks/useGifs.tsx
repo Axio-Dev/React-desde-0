@@ -22,10 +22,11 @@ export const useGifs = () => {
   };
 
   const handleSearch = async (query: string) => {
-    const queryFormatted = query.trim().toLowerCase();
-    if (!queryFormatted) return;
-    if (previousTerms.includes(queryFormatted)) return;
-    setPreviousTerms([queryFormatted, ...previousTerms].splice(0, 8));
+    query = query.trim().toLowerCase();
+
+    if (!query) return;
+    if (previousTerms.includes(query)) return;
+    setPreviousTerms([query, ...previousTerms].splice(0, 8));
 
     const gifs = await getGifsByQuery(query);
     console.log(gifs);
