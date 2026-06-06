@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { getGifsByQuery } from "../actions/get-gifs-by.query.action";
+import { getGifsByQuery } from "../actions/get-gifs-by-query.action";
 import type { Gif } from "../interfaces/gif.interface";
 
 // Moving outside of the main hook to avoid re-rendering and avoid duplicate HTTP calls
