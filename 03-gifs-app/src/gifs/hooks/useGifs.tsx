@@ -29,11 +29,10 @@ export const useGifs = () => {
     setPreviousTerms([query, ...previousTerms].splice(0, 8));
 
     const gifs = await getGifsByQuery(query);
-    console.log(gifs);
     setGifs(gifs);
 
     gifsCache.current[query] = gifs;
-    console.log(gifsCache);
+    // console.log(gifsCache);
   };
 
   return {
