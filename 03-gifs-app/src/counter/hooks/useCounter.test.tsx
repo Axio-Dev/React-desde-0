@@ -42,7 +42,13 @@ describe("useCounter", () => {
 
     act(() => {
       result.current.handleSubtract();
+      result.current.handleSubtract();
+      result.current.handleSubtract();
+      result.current.handleSubtract();
+      result.current.handleSubtract();
     });
+
+    expect(result.current.counter).toBe(5);
 
     act(() => {
       result.current.handleReset();
