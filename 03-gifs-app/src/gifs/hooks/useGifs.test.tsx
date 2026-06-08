@@ -25,6 +25,18 @@ describe("useGifs", () => {
     expect(result.current.gifs.length).toBe(10);
   });
 
+  test("should return zero gifs if query is empty", async () => {
+    const { result } = renderHook(() => useGifs());
+
+    const gifSearch = "";
+
+    await act(async () => {
+      await result.current.handleSearch(gifSearch);
+    });
+
+    expect(result.current.gifs.length).toBe(0);
+  });
+
   test("should return a list of gifs when handleTermClicked is called", async () => {
     const { result } = renderHook(() => useGifs());
     const previousTerm = "saitama";
