@@ -72,8 +72,9 @@ export const ScrambleWords = () => {
   };
 
   const handleError = () => {
-    setErrorCounter(errorCounter + 1);
-    if (errorCounter === maxAllowErrors) setIsGameOver(true);
+    const nextErrorCounter = errorCounter + 1;
+    setErrorCounter(nextErrorCounter);
+    if (nextErrorCounter === maxAllowErrors) setIsGameOver(true);
   };
 
   const handleGuessSubmit = (e: React.FormEvent) => {
@@ -83,11 +84,11 @@ export const ScrambleWords = () => {
 
     if (guess === currentWord) {
       setPoints(points + 1);
+      setGuess("");
       const shuffledWords = shuffleArray(GAME_WORDS);
       const next = shuffledWords[0];
       setCurrentWord(next);
       setScrambledWord(scrambleWord(next));
-      setGuess("");
     } else {
       return handleError();
     }
