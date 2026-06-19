@@ -1,15 +1,17 @@
-import { useOptimistic, useState } from "react";
+import { useOptimistic, useState, useTransition } from "react";
 
 interface Comment {
-  id: number;
+  id: `${string}-${string}-${string}-${string}-${string}`;
   text: string;
   optimistic?: boolean; // Esto no es necesario pero sirve como bandera
 }
 
 export const InstagromApp = () => {
+  const [isPending, startTransition] = useTransition();
+
   const [comments, setComments] = useState<Comment[]>([
-    { id: 1, text: "¡Gran foto!" },
-    { id: 2, text: "Me encanta 🧡" },
+    { id: crypto.randomUUID(), text: "¡Gran foto!" },
+    { id: crypto.randomUUID(), text: "Me encanta 🧡" },
   ]);
 
   const [optimisticComments, addOptimisticComments] = useOptimistic(
@@ -18,7 +20,7 @@ export const InstagromApp = () => {
       return [
         ...currentComments,
         {
-          id: new Date().getTime(),
+          id: crypto.randomUUID(),
           text: newCommentText,
           optimistic: true,
         },
@@ -31,16 +33,18 @@ export const InstagromApp = () => {
 
     addOptimisticComments(messageText);
 
-    // Simular petición HTPP al servidor
-    await new Promise((resolve) => setTimeout(resolve, 3000));
+    startTransition(async () => {
+      // Simular petición HTPP al servidor
+      await new Promise((resolve) => setTimeout(resolve, 3000));
 
-    setComments((prev) => [
-      ...prev,
-      {
-        id: new Date().getTime(),
-        text: messageText,
-      },
-    ]);
+      setComments((prev) => [
+        ...prev,
+        {
+          id: crypto.randomUUID(),
+          text: messageText,
+        },
+      ]);
+    });
   };
 
   return (
@@ -86,7 +90,7 @@ export const InstagromApp = () => {
         />
         <button
           type="submit"
-          disabled={false}
+          disabled={isPending}
           className="bg-blue-500 text-white p-2 rounded-md w-full"
         >
           Enviar
