@@ -30,20 +30,6 @@ export const ScrambleWords = () => {
     totalWords,
   } = state;
 
-  // const [words, setWords] = useState(shuffleArray(GAME_WORDS));
-
-  // const [currentWord, setCurrentWord] = useState(words[0]);
-  // const [scrambledWord, setScrambledWord] = useState(scrambleWord(currentWord));
-  // const [guess, setGuess] = useState("");
-  // const [points, setPoints] = useState(0);
-  // const [errorCounter, setErrorCounter] = useState(0);
-  // const [maxAllowErrors, setMaxAllowErrors] = useState(3);
-
-  // const [skipCounter, setSkipCounter] = useState(0);
-  // const [maxSkips, setMaxSkips] = useState(3);
-
-  // const [isGameOver, setIsGameOver] = useState(false);
-
   const handleGuessSubmit = (e: React.FormEvent) => {
     // Previene el refresh de la página
     e.preventDefault();
@@ -54,25 +40,13 @@ export const ScrambleWords = () => {
   };
 
   const handleSkip = () => {
-    // if (skipCounter >= maxSkips) setMaxSkips(maxSkips);
-    // const updatedWords = words.splice(1);
-    // setSkipCounter(skipCounter + 1);
-    // setWords(updatedWords);
-    // setCurrentWord(updatedWords[0]);
-    // setScrambledWord(scrambleWord(updatedWords[0]));
-    // setGuess("");
+    dispatch({
+      type: "SKIP_WORD",
+    });
   };
 
   const handlePlayAgain = () => {
-    // const newArray = shuffleArray(GAME_WORDS);
-    // setPoints(0);
-    // setErrorCounter(0);
-    // setGuess("");
-    // setWords(newArray);
-    // setCurrentWord(newArray[0]);
-    // setScrambledWord(scrambleWord(newArray[0]));
-    // setIsGameOver(false);
-    // setSkipCounter(0);
+    dispatch({ type: "PLAY_AGAIN", payload: getInitialState() });
   };
 
   //! Si ya no hay palabras para jugar, se muestra el mensaje de fin de juego
