@@ -1,7 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import { MemoCounter } from "./06-memos/MemoCounter";
+import { InstagromApp } from "./07-useOptimistic/InstagromApp";
+// import { MemoCounter } from "./06-memos/MemoCounter";
 // import { MemoHook } from "./06-memos/MemoHook";
 // import { FocusScreen } from "./04-useRef/FocusScreen";
 // import { TasksApp } from "./05-useReducer/TaskApp";
@@ -22,6 +23,7 @@ createRoot(document.getElementById("root")!).render(
     {/* <FocusScreen /> */}
     {/* <TasksApp /> */}
     {/* <MemoHook /> */}
-    <MemoCounter></MemoCounter>
+    {/* <MemoCounter></MemoCounter> */}
+    <InstagromApp />
   </StrictMode>,
 );
