@@ -13,11 +13,18 @@ export const MemoHook = () => {
       <MyTitle title={title} />
       <MySubTitle subTitle={subTitle} />
 
-      <button className="bg-blue-500 text-white px-4 rounded-md cursor-pointer">
+      <button
+        className="bg-blue-500 text-white px-4 rounded-md cursor-pointer"
+        onClick={() => setTitle("Hello, " + new Date().getTime())}
+      >
         Cambiar Título
       </button>
 
-      <button className="bg-blue-500 text-white px-4 rounded-md cursor-pointer">
+      <button
+        className="bg-blue-500 text-white px-4 rounded-md cursor-pointer"
+        // onClick={() => setSubtitle("World!, " + new Date().getTime())}
+        onClick={() => setSubtitle("World!")}
+      >
         Cambiar subtítulo
       </button>
     </div>
