@@ -1,7 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import { MemoHook } from "./06-memos/MemoHook";
+import { MemoCounter } from "./06-memos/MemoCounter";
+// import { MemoHook } from "./06-memos/MemoHook";
 // import { FocusScreen } from "./04-useRef/FocusScreen";
 // import { TasksApp } from "./05-useReducer/TaskApp";
 // import { ScrambleWords } from "./05-useReducer/ScrambleWords";
@@ -20,6 +21,7 @@ createRoot(document.getElementById("root")!).render(
     {/* <PokemonPage /> */}
     {/* <FocusScreen /> */}
     {/* <TasksApp /> */}
-    <MemoHook />
+    {/* <MemoHook /> */}
+    <MemoCounter></MemoCounter>
   </StrictMode>,
 );
