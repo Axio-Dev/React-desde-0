@@ -1,4 +1,5 @@
 import { useOptimistic, useState, useTransition } from "react";
+import { toast } from "sonner";
 
 interface Comment {
   id: `${string}-${string}-${string}-${string}-${string}`;
@@ -37,13 +38,25 @@ export const InstagromApp = () => {
       // Simular petición HTPP al servidor
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
-      setComments((prev) => [
-        ...prev,
-        {
-          id: crypto.randomUUID(),
-          text: messageText,
+      //! Simulando error en el posteo del comentario
+      // setComments((prev) => [
+      //   ...prev,
+      //   {
+      //     id: crypto.randomUUID(),
+      //     text: messageText,
+      //   },
+      // ]);
+      //! Este sería el código para revertir el proceso/estado
+      setComments((prev) => prev);
+      toast("Error al agregar el comentario", {
+        description: "Intente nuevamente",
+        duration: 10_000,
+        position: "top-right",
+        action: {
+          label: "Cerrar",
+          onClick: () => toast.dismiss(),
         },
-      ]);
+      });
     });
   };
 
