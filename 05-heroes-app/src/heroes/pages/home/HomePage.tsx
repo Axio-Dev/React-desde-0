@@ -1,4 +1,4 @@
-import { Heart, ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
+import { ChevronLeft, ChevronRight, MoreHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CustomJumbotron } from "@/components/custom/CustomJumbotron";
@@ -34,7 +34,6 @@ export const HomePage = () => {
               className="flex items-center gap-2"
               onClick={() => setActiveTab("favorites")}
             >
-              <Heart className="h-4 w-4" />
               Favorites (3)
             </TabsTrigger>
             <TabsTrigger value="heroes" onClick={() => setActiveTab("heroes")}>
