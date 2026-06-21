@@ -15,6 +15,7 @@
     "@hugeicons/react": "^1.1.7",
     "@tailwindcss/vite": "^4.3.1",
     "add": "^2.0.6",
+    "axios": "^1.18.0",
     "button": "^1.1.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
