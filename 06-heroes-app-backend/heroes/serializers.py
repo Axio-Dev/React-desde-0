@@ -5,6 +5,8 @@ class HeroSerliazer(serializers.ModelSerializer):
     class Meta:
         model = Hero
         fields = (
+            "id",
+            "slug",
             "name",
             "alias",
             "powers",
@@ -20,4 +22,3 @@ class HeroSerliazer(serializers.ModelSerializer):
             "category",
             "universe",
         )
-        read_only_fields = ("id", "slug",)
