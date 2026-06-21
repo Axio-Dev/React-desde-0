@@ -20,6 +20,7 @@
     "clsx": "^2.1.1",
     "init": "^0.1.2",
     "lucide-react": "^1.21.0",
+    "navigation-menu": "^1.0.0",
     "radix-ui": "^1.6.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
