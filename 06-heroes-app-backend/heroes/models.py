@@ -2,9 +2,9 @@ from django.db import models
 import uuid
 
 class Universe(models.TextChoices):
+    SU = "SU", "Sin Universo"
     MARVEL = 'MV', "Marvel"
     DC = "DC" , "Detective Comics"
-    SU = "SU", "Sin Universo"
 
 # Create your models here.
 class Hero(models.Model):
