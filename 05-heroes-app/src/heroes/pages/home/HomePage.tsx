@@ -10,7 +10,7 @@ import { HeroGrid } from "@/heroes/components/HeroGrid";
 import { CustomPagination } from "@/components/custom/CustomPagination";
 import { CustomBreadcrumbs } from "@/components/custom/CustomBreadcrumbs";
 import { getHeroesByPageAction } from "@/heroes/actions/get-heroes-by-page.action";
-import { useHeroStats } from "@/heroes/hooks/useHeroStats";
+import { useHeroSummary } from "@/heroes/hooks/useHeroSummary";
 
 export const HomePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -31,7 +31,7 @@ export const HomePage = () => {
     staleTime: 1000 * 60 * 5, // Caché fresca por 5 minutos
   });
 
-  const { summary } = useHeroStats();
+  const { summary } = useHeroSummary();
 
   console.log({ data });
 

@@ -3,10 +3,10 @@ import { Heart, Trophy, Users, Zap } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { HeroStatCard } from "./HeroStatCard";
 
-import { useHeroStats } from "../hooks/useHeroStats";
+import { useHeroSummary } from "../hooks/useHeroSummary";
 
 export const HeroStats = () => {
-  const { summary } = useHeroStats();
+  const { summary } = useHeroSummary();
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
