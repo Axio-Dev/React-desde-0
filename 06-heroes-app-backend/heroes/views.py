@@ -20,10 +20,13 @@ class HeroSummaryAPIView(APIView):
         smartest = Hero.objects.order_by("-intelligence").first()
         hero_count = Hero.objects.filter(category="Hero").count()
         villian_count = Hero.objects.filter(category="Villain").count()
+        total_characters = Hero.objects.all().count()
+
         return Response({
             "strongest_hero": HeroSerliazer(strongest).data if strongest else None,
             "smartest_hero": HeroSerliazer(smartest).data if strongest else None,
             "hero_count": hero_count,
             "villian_count": villian_count,
+            "total": total_characters
         })
 
