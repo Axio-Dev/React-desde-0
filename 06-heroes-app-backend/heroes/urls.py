@@ -3,6 +3,6 @@ from .api import HeroViewSet
 
 router = routers.DefaultRouter()
 
-router.register("api/heros", HeroViewSet, "heros")
+router.register("api/heroes", HeroViewSet, "hereos")
 
 urlpatterns = router.urls
