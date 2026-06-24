@@ -1,39 +1,14 @@
-import { data, useSearchParams } from "react-router";
-import { useQuery } from "@tanstack/react-query";
-
-import { useMemo } from "react";
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CustomJumbotron } from "@/components/custom/CustomJumbotron";
 import { HeroStats } from "@/heroes/components/HeroStats";
 import { HeroGrid } from "@/heroes/components/HeroGrid";
 import { CustomPagination } from "@/components/custom/CustomPagination";
 import { CustomBreadcrumbs } from "@/components/custom/CustomBreadcrumbs";
-import { getHeroesByPageAction } from "@/heroes/actions/get-heroes-by-page.action";
-import { useHeroSummary } from "@/heroes/hooks/useHeroSummary";
+import { useHomePage } from "@/heroes/hooks/useHomePage";
 
 export const HomePage = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const activeTab = searchParams.get("tab") ?? "all";
-  const page = searchParams.get("page") ?? "1";
-  const limit = searchParams.get("limit") ?? "6";
-
-  const selectedTab = useMemo(() => {
-    const validTabs = ["all", "favorites", "heroes", "villains"];
-
-    return validTabs.includes(activeTab) ? activeTab : "all";
-  }, [activeTab]);
-
-  const { data: heroesResponse } = useQuery({
-    queryKey: ["heroes", "page", { page, limit }], // Manando la page y el limit como objeto para que no importe la posición en el url
-    queryFn: () => getHeroesByPageAction(+page, +limit),
-    staleTime: 1000 * 60 * 5, // Caché fresca por 5 minutos
-  });
-
-  const { summary } = useHeroSummary();
-
-  console.log({ data });
+  const { selectedTab, setSearchParams, summary, heroesResponse } =
+    useHomePage();
 
   return (
     <>
