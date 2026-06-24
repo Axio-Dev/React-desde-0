@@ -1,3 +1,29 @@
-from django.shortcuts import render
+from rest_framework import viewsets, permissions
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
-# Create your views here.
+from .models import Hero
+from .serializers import HeroSerliazer
+from .pagination import HeroPagination
+
+
+
+class HeroViewSet(viewsets.ModelViewSet):
+    queryset = Hero.objects.all()
+    permission_classes = [permissions.AllowAny]
+    serializer_class = HeroSerliazer
+    pagination_class = HeroPagination
+
+class HeroSummaryAPIView(APIView):
+    def get(self, request):
+        strongest = Hero.objects.order_by("-strength").first()
+        smartest = Hero.objects.order_by("-intelligence").first()
+        hero_count = Hero.objects.filter(category="Hero").count()
+        villian_count = Hero.objects.filter(category="Villain").count()
+        return Response({
+            "strongest_hero": HeroSerliazer(strongest).data if strongest else None,
+            "smartest_hero": HeroSerliazer(smartest).data if strongest else None,
+            "hero_count": hero_count,
+            "villian_count": villian_count,
+        })
+
