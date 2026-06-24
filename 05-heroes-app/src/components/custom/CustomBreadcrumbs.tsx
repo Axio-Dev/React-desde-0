@@ -15,7 +15,7 @@ interface Breadcrumb {
 
 interface Props {
   currentPage: string;
-  breadcrumbs: Breadcrumb[];
+  breadcrumbs?: Breadcrumb[];
 }
 
 export const CustomBreadcrumbs = ({ currentPage, breadcrumbs = [] }: Props) => {
