@@ -24,7 +24,7 @@ export const HomePage = () => {
   }, [activeTab]);
 
   const { data: heroesResponse } = useQuery({
-    queryKey: ["heroes"],
+    queryKey: ["heroes", "page", { page, limit }], // Manando la page y el limit como objeto para que no importe la posición en el url
     queryFn: () => getHeroesByPageAction(+page, +limit),
     staleTime: 1000 * 60 * 5, // Caché fresca por 5 minutos
   });
@@ -117,7 +117,8 @@ export const HomePage = () => {
         </Tabs>
 
         {/* Pagination */}
-        <CustomPagination totalPages={8} />
+        {}
+        <CustomPagination totalPages={heroesResponse?.total_pages ?? 1} />
       </>
     </>
   );
