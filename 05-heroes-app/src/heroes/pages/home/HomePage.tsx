@@ -40,6 +40,7 @@ export const HomePage = () => {
             >
               All Characters ({summary?.total})
             </TabsTrigger>
+
             <TabsTrigger
               value="favorites"
               className="flex items-center gap-2"
