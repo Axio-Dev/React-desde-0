@@ -6,13 +6,10 @@ import { toast } from "sonner";
 import { getHero } from "@/heroes/actions/get-hero";
 import { useQuery } from "@tanstack/react-query";
 import { Shield, Zap, Brain, Gauge, Users, Star, Award, X } from "lucide-react";
-import { useEffect, useRef } from "react";
-import { useNavigate, useParams } from "react-router";
+import { Navigate, useParams } from "react-router";
 
 export const HeroPage = () => {
   const { idSlug = "" } = useParams();
-  const navigate = useNavigate();
-  const toastIdRef = useRef<string | number | null>(null);
 
   const { data: superheroData, isError } = useQuery({
     queryKey: ["hero-detail", idSlug],
@@ -20,28 +17,10 @@ export const HeroPage = () => {
     retry: false,
   });
 
-  useEffect(() => {
-    if (isError) {
-      if (!toastIdRef.current) {
-        toastIdRef.current = toast.warning(
-          "Error Hero/Villain not found. Returning to Home Page",
-          { id: "hero-not-found" },
-        );
-      }
-      navigate("/", { replace: true });
-      return;
-    }
-
-    if (toastIdRef.current) {
-      toast.dismiss(toastIdRef.current);
-      toastIdRef.current = null;
-    }
-  }, [isError, navigate]);
-
   if (isError) {
-    return null;
+    toast.warning(`Error Hero/Villain not found. Rerturning to Home Page`);
+    return <Navigate to="/" />;
   }
-
   if (!superheroData) {
     return <h3>Loading...</h3>;
   }
