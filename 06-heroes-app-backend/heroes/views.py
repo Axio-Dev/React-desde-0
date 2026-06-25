@@ -2,6 +2,9 @@ from rest_framework import viewsets, permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from django_filters.rest_framework import DjangoFilterBackend
+
+from .filters import HeroFilter
 from .models import Hero
 from .serializers import HeroSerliazer
 from .pagination import HeroPagination
@@ -13,6 +16,10 @@ class HeroViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.AllowAny]
     serializer_class = HeroSerliazer
     pagination_class = HeroPagination
+    
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = HeroFilter
+
 
 class HeroSummaryAPIView(APIView):
     def get(self, request):

@@ -5,7 +5,7 @@ import math
 
 class HeroPagination(LimitOffsetPagination):
     default_limit = 6
-    max_limit = 12
+    max_limit = 100
 
     def get_paginated_response(self, data):
         count = self.count
