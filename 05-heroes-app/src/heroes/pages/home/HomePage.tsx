@@ -32,6 +32,8 @@ export const HomePage = () => {
               onClick={() =>
                 setSearchParams((prev) => {
                   prev.set("tab", "all");
+                  prev.set("category", "all");
+                  prev.set("page", "1");
                   return prev;
                 })
               }
@@ -55,6 +57,8 @@ export const HomePage = () => {
               onClick={() =>
                 setSearchParams((prev) => {
                   prev.set("tab", "heroes");
+                  prev.set("category", "hero");
+                  prev.set("page", "1");
                   return prev;
                 })
               }
@@ -66,6 +70,8 @@ export const HomePage = () => {
               onClick={() =>
                 setSearchParams((prev) => {
                   prev.set("tab", "villains");
+                  prev.set("category", "villain");
+                  prev.set("page", "1");
                   return prev;
                 })
               }
@@ -86,12 +92,12 @@ export const HomePage = () => {
           {/* All Heroes */}
           <TabsContent value="heroes">
             <h1>Héroes</h1>
-            <HeroGrid heroes={[]} />
+            <HeroGrid heroes={heroesResponse?.results ?? []} />
           </TabsContent>
           {/* All Villians */}
           <TabsContent value="villains">
             <h1>Villanos</h1>
-            <HeroGrid heroes={[]} />
+            <HeroGrid heroes={heroesResponse?.results ?? []} />
           </TabsContent>
         </Tabs>
 

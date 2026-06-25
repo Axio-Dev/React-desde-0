@@ -9,6 +9,7 @@ export const useHomePage = () => {
   const activeTab = searchParams.get("tab") ?? "all";
   const page = searchParams.get("page") ?? "1";
   const limit = searchParams.get("limit") ?? "6";
+  const category = searchParams.get("category") ?? "aa";
 
   const selectedTab = useMemo(() => {
     const validTabs = ["all", "favorites", "heroes", "villains"];
@@ -16,7 +17,7 @@ export const useHomePage = () => {
     return validTabs.includes(activeTab) ? activeTab : "all";
   }, [activeTab]);
 
-  const { heroesResponse } = useHeroPaginated(+page, +limit);
+  const { heroesResponse } = useHeroPaginated(+page, +limit, category);
 
   const { summary } = useHeroSummary();
 
