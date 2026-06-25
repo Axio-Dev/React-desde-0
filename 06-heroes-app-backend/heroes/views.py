@@ -20,6 +20,8 @@ class HeroViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_class = HeroFilter
 
+    lookup_field = "slug"
+
 
 class HeroSummaryAPIView(APIView):
     def get(self, request):
