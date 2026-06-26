@@ -1,12 +1,12 @@
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from django_filters.rest_framework import DjangoFilterBackend
 
-from .filters import HeroFilter
+from .filters import HeroFilter, HeroSearchFilter
 from .models import Hero
-from .serializers import HeroSerliazer
+from .serializers import HeroSerializer
 from .pagination import HeroPagination
 
 
@@ -14,7 +14,7 @@ from .pagination import HeroPagination
 class HeroViewSet(viewsets.ModelViewSet):
     queryset = Hero.objects.all()
     permission_classes = [permissions.AllowAny]
-    serializer_class = HeroSerliazer
+    serializer_class = HeroSerializer
     pagination_class = HeroPagination
     
     filter_backends = [DjangoFilterBackend]
@@ -32,10 +32,17 @@ class HeroSummaryAPIView(APIView):
         total_characters = Hero.objects.all().count()
 
         return Response({
-            "strongest_hero": HeroSerliazer(strongest).data if strongest else None,
-            "smartest_hero": HeroSerliazer(smartest).data if strongest else None,
+            "strongest_hero": HeroSerializer(strongest).data if strongest else None,
+            "smartest_hero": HeroSerializer(smartest).data if strongest else None,
             "hero_count": hero_count,
             "villian_count": villian_count,
             "total": total_characters
         })
 
+class HeroSearchAPIView(generics.ListAPIView):
+    queryset = Hero.objects.all()
+    serializer_class = HeroSerializer
+
+    filter_backends = [DjangoFilterBackend]
+
+    filterset_class = HeroSearchFilter

@@ -14,3 +14,17 @@ class HeroFilter(django_filters.FilterSet):
             return queryset
         
         return queryset.filter(category__iexact=value)
+
+class HeroSearchFilter(django_filters.FilterSet):
+    name = django_filters.CharFilter(lookup_expr="icontains")
+    strength = django_filters.NumberFilter(field_name="strength", lookup_expr="gte")
+    universe = django_filters.CharFilter(lookup_expr="iexact")
+    
+    class Meta:
+        model = Hero
+        fields = [
+            "team",
+            "category",
+            "universe",
+            "status",
+        ]

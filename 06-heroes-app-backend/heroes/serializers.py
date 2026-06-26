@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import Hero
 
-class HeroSerliazer(serializers.ModelSerializer):
+class HeroSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hero
         fields = (
