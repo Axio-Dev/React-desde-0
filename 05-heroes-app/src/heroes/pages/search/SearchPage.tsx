@@ -4,32 +4,21 @@ import { SearchControls } from "./ui/SearchControls";
 import { CustomBreadcrumbs } from "@/components/custom/CustomBreadcrumbs";
 import { HeroGrid } from "@/heroes/components/HeroGrid";
 import { useSearchParams } from "react-router";
-import {
-  searchHeroesAction,
-  type Options,
-} from "@/heroes/actions/search-heroes.action";
+import { searchHeroesAction } from "@/heroes/actions/search-heroes.action";
 import { useQuery } from "@tanstack/react-query";
 
 export const SearchPage = () => {
   const [searchParams] = useSearchParams();
 
-  const options: Options = {
-    name: searchParams.get("name") ?? undefined,
-    category: searchParams.get("category") ?? undefined,
-    team: searchParams.get("team") ?? undefined,
-    universe: searchParams.get("universe") ?? undefined,
-    status: searchParams.get("status") ?? undefined,
-    strength: searchParams.get("strength")
-      ? Number(searchParams.get("strength"))
-      : undefined,
-  };
+  const name = searchParams.get("name") ?? undefined;
 
-  const { data: searchedHeroData } = useQuery({
-    queryKey: ["searched-hero", options],
-    queryFn: () => searchHeroesAction(options),
+  const { data = [] } = useQuery({
+    queryKey: ["search", { name }],
+    queryFn: () => searchHeroesAction({ name }),
+    staleTime: 1000 * 60 * 5,
   });
 
-  console.log({ searchedHeroData });
+  console.log({ data });
 
   return (
     <>
@@ -53,7 +42,7 @@ export const SearchPage = () => {
       <SearchControls />
 
       {/* */}
-      <HeroGrid heroes={searchedHeroData?.results ?? []} />
+      <HeroGrid heroes={data} />
     </>
   );
 };

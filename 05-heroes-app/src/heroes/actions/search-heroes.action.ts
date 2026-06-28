@@ -1,7 +1,8 @@
 import { heroApi } from "../api/hero.api";
 import type { HeroesResponse } from "../types/get-heroes.response";
+import type { Hero } from "../types/hero.interface";
 
-export interface Options {
+interface Options {
   name?: string;
   status?: string;
   team?: string;
@@ -12,18 +13,27 @@ export interface Options {
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
-export const searchHeroesAction = async (options: Options) => {
+export const searchHeroesAction = async (options: Options = {}) => {
+  const { name, team, category, universe, status, strength } = options;
+
+  if (!name && !team && !category && !universe && !status && !strength) {
+    return [];
+  }
+
   const { data } = await heroApi.get<HeroesResponse>("/search", {
-    params: options,
+    params: {
+      name,
+      team,
+      category,
+      universe,
+      status,
+      strength,
+    },
   });
 
-  const searchedHero = data.results.map((hero) => ({
+  return data.results.map((hero) => ({
     ...hero,
-    image: `${BASE_URL}/media/heroes/${hero.image}`,
+    results: data,
+    image: `${BASE_URL}/media/heroes/${hero.image}/`,
   }));
-
-  return {
-    ...data,
-    results: searchedHero,
-  };
 };
