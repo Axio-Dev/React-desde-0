@@ -20,6 +20,17 @@ export const SearchControls = () => {
     }
   };
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
+
+    if (value === "") {
+      setSearchParams((prev) => {
+        prev.delete("name");
+        return prev;
+      });
+    }
+  };
+
   return (
     <>
       {/* Basic Filters */}
@@ -32,6 +43,7 @@ export const SearchControls = () => {
             placeholder="Search heroes, villains, powers, teams..."
             className="pl-12 h-12 text-lg bg-white"
             onKeyDown={handleKeyDown}
+            onChange={handleChange}
             defaultValue={searchParams.get("name") ?? ""}
           />
         </div>
