@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { getHero } from "@/heroes/actions/get-hero";
+import { getHeroAction } from "@/heroes/actions/get-hero.action";
 import { useQuery } from "@tanstack/react-query";
 import { Shield, Zap, Brain, Gauge, Users, Star, Award, X } from "lucide-react";
 import { Navigate, useParams } from "react-router";
@@ -13,7 +13,7 @@ export const HeroPage = () => {
 
   const { data: superheroData, isError } = useQuery({
     queryKey: ["hero-detail", idSlug],
-    queryFn: () => getHero(idSlug!),
+    queryFn: () => getHeroAction(idSlug!),
     retry: false,
   });
 
