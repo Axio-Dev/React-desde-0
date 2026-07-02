@@ -5,6 +5,13 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { PropsWithChildren } from "react";
 
 const tanStackCustomProviders = () => {
+  /**
+   * Devuelve un wrapper para pruebas que envuelve los children con un
+   * `QueryClientProvider` usando un `QueryClient` aislado por llamada.
+   *
+   * - Desactiva los reintentos (`retry: false`) para tests deterministas.
+   * - Usar como `wrapper` en `renderHook` o `render` para proporcionar React Query.
+   */
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
