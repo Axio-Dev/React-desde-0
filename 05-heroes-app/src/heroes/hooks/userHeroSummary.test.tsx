@@ -4,7 +4,7 @@ import { useHeroSummary } from "./useHeroSummary";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { PropsWithChildren } from "react";
 
-const tanStackCustomProviders = () => {
+const tanStackCustomProvider = () => {
   /**
    * Devuelve un wrapper para pruebas que envuelve los children con un
    * `QueryClientProvider` usando un `QueryClient` aislado por llamada.
@@ -28,7 +28,7 @@ const tanStackCustomProviders = () => {
 describe("useHeroSummary", () => {
   test("should return the initial state (isLoading)", () => {
     const { result } = renderHook(() => useHeroSummary(), {
-      wrapper: tanStackCustomProviders(),
+      wrapper: tanStackCustomProvider(),
     });
 
     expect(result.current.isLoading).toBe(true);
