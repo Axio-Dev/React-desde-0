@@ -8,10 +8,14 @@ import { use } from "react";
 import { FavoriteHeroContext } from "../context/FavoriteHeroContext";
 
 export const HeroStats = () => {
-  const { summary } = useHeroSummary();
+  const { data: summary } = useHeroSummary();
   const { favoriteCount } = use(FavoriteHeroContext);
 
   const totalPercentage = summary ? (favoriteCount / summary.total) * 100 : 0;
+
+  if (!summary) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
@@ -25,7 +29,7 @@ export const HeroStats = () => {
             {summary?.hero_count} Heroes
           </Badge>
           <Badge variant="destructive" className="text-xs">
-            {summary?.villian_count} Villians
+            {summary?.villian_count} Villains
           </Badge>
         </div>
       </HeroStatCard>
