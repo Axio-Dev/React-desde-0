@@ -13,13 +13,11 @@ export const SearchPage = () => {
   const name = searchParams.get("name") ?? undefined;
   const strength = searchParams.get("strength") ?? undefined;
 
-  const { data = [] } = useQuery({
+  const { data: heroes = [] } = useQuery({
     queryKey: ["search", { name, strength }],
     queryFn: () => searchHeroesAction({ name, strength }),
     staleTime: 1000 * 60 * 5,
   });
-
-  console.log({ data });
 
   return (
     <>
@@ -43,7 +41,7 @@ export const SearchPage = () => {
       <SearchControls />
 
       {/* */}
-      <HeroGrid heroes={data} />
+      <HeroGrid heroes={heroes} />
     </>
   );
 };
