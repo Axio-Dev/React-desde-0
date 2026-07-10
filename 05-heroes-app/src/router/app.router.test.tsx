@@ -67,7 +67,15 @@ describe("appRouter", () => {
     render(<RouterProvider router={router} />);
 
     expect(await screen.findByTestId("search-page")).toBeDefined();
+  });
 
-    screen.debug();
+  test("should redirect to home page for unknown routes", () => {
+    const router = createMemoryRouter(appRouter.routes, {
+      initialEntries: ["/non-existing-page"],
+    });
+
+    render(<RouterProvider router={router} />);
+
+    expect(screen.getByTestId("home-page")).toBeDefined();
   });
 });
