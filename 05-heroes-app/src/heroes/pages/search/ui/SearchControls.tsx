@@ -12,8 +12,6 @@ import {
 } from "@/components/ui/accordion";
 
 export const SearchControls = () => {
-  // const [query, setQuery] = useState("");
-
   const [searchParams, setSearchParams] = useSearchParams();
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -96,9 +94,14 @@ export const SearchControls = () => {
           </Button>
         </div>
       </div>
-      {/* Advanced Filters */}
 
-      <Accordion type="single" collapsible value={activeAccordion}>
+      {/* Advanced Filters */}
+      <Accordion
+        type="single"
+        collapsible
+        value={activeAccordion}
+        data-testid="accordion"
+      >
         <AccordionItem value="advance-filters">
           {/* <AccordionTrigger>Is it accessible?</AccordionTrigger> */}
           <AccordionContent>
