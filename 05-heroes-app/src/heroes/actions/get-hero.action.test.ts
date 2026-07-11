@@ -1,5 +1,6 @@
 import { describe, expect, test } from "vitest";
 import { getHeroAction } from "./get-hero.action";
+console.log(import.meta.env.VITE_API_URL);
 
 describe("getHeroAction", () => {
   test("should fetch hero data and return with complete image url", async () => {
@@ -14,7 +15,7 @@ describe("getHeroAction", () => {
       durability: 7,
       first_appearance: "1939",
       id: "cca55be1-1e8e-46ad-8112-7816c2eed97c",
-      image: "http://localhost:8001/media/heroes/2.jpeg",
+      image: "http://localhost:8001/static/images/heroes/2.jpeg",
       intelligence: 10,
       name: "Bruce Wayne",
       powers: [

@@ -8,6 +8,6 @@ export const getHeroAction = async (idSlug: string) => {
 
   return {
     ...data,
-    image: `${BASE_URL}/media/heroes/${data.image}`,
+    image: `${BASE_URL}/static/images/heroes/${data.image}`,
   };
 };

@@ -90,9 +90,9 @@ describe("SearchPage", () => {
 
   test("should render HeroGrid with search results", async () => {
     const mockHeroes = [
-      { id: "1", name: "Clark Kent" } as unknown as Hero,
-      { id: "2", name: "Bruce Wayne" } as unknown as Hero,
-    ];
+      { id: "1", name: "Clark Kent" },
+      { id: "2", name: "Bruce Wayne" },
+    ] as Awaited<ReturnType<typeof searchHeroesAction>>;
 
     mockSearchHeroesAction.mockResolvedValue(mockHeroes);
 

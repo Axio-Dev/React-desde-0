@@ -5,7 +5,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import { getHeroAction } from "@/heroes/actions/get-hero.action";
 import { useQuery } from "@tanstack/react-query";
-import { Shield, Zap, Brain, Gauge, Users, Star, Award, X } from "lucide-react";
+import { Shield, Zap, Brain, Gauge, Users, Star, Award } from "lucide-react";
 import { Navigate, useParams } from "react-router";
 
 export const HeroPage = () => {

@@ -3,7 +3,6 @@ import { appRouter } from "./router/app.router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "./components/ui/sonner";
-import { AlertTriangle } from "@hugeicons/core-free-icons";
 import { FavoriteHeroProvider } from "./heroes/context/FavoriteHeroContext";
 
 const queryClient = new QueryClient();

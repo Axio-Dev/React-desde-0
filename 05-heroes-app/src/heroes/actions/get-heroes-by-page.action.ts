@@ -25,7 +25,7 @@ export const getHeroesByPageAction = async (
 
   const heroes = data.results.map((hero) => ({
     ...hero,
-    image: `${BASE_URL}/media/heroes/${hero.image}`,
+    image: `${BASE_URL}/static/images/heroes/${hero.image}`,
   }));
   return {
     ...data,

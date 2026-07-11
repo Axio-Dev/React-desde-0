@@ -37,8 +37,8 @@ describe("getHeroesByPageAction", () => {
       next: null,
       previous: null,
       results: [
-        { image: `${BASE_URL}/media/heroes/1.jpeg` },
-        { image: `${BASE_URL}/media/heroes/2.jpeg` },
+        { image: `${BASE_URL}/static/images/heroes/1.jpeg` },
+        { image: `${BASE_URL}/static/images/heroes/2.jpeg` },
       ],
     });
   });

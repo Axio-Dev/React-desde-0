@@ -1,6 +1,5 @@
 import { heroApi } from "../api/hero.api";
 import type { HeroesResponse } from "../types/get-heroes.response";
-import type { Hero } from "../types/hero.interface";
 
 interface Options {
   name?: string;
@@ -34,6 +33,6 @@ export const searchHeroesAction = async (options: Options = {}) => {
   return data.results.map((hero) => ({
     ...hero,
     results: data,
-    image: `${BASE_URL}/media/heroes/${hero.image}/`,
+    image: `${BASE_URL}/static/images/heroes/${hero.image}`,
   }));
 };
